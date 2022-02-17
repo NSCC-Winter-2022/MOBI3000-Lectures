@@ -16,6 +16,9 @@ function App(props) {
         for (const h of h1) {
             h.style.backgroundColor = 'green'
         }
+        for (var i = 0; i < h1.length; i++) {
+            h1[i].style.backgroundColor = 'green';
+        }
     })
 
     // runs when count changes

@@ -2,6 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 
+function Button() {
+
+}
+
 ReactDOM.render(
     <>
         <App countBy={1} fontSize={12} />
