@@ -7,8 +7,11 @@ function App() {
     const [result, setResult] = useState("0");
     const [oldResult, setOldResult] = useState("");
     const [operator, setOperator] = useState("");
+    const [message, setMessage] = useState("");
 
-    function buttonClick(text) {
+    function buttonClick(e) {
+        setMessage("CLICKED!")
+        const text = e.target.innerText;
         switch(text) {
         case "AC":
             setResult("");
@@ -36,20 +39,20 @@ function App() {
             setOldResult(result)
             break;
         default:
-            setResult(prev => prev + text);
+            setResult(prev => prev + e.target.value);
         }
     }
 
   return (
     <div className="App">
       <h1>{result}</h1>
-      <Button text="AC" onClick={buttonClick} />
-      <Button text="+/-" onClick={buttonClick} />
-      <Button text="%" onClick={buttonClick} />
-      <Button text="*" onClick={buttonClick} />
-      <Button text="7" onClick={buttonClick} />
-      <Button text="8" onClick={buttonClick} />
-      <Button text="9" onClick={buttonClick} />
+      <Button text="AC" onClick={buttonClick} message={message} />
+      <Button text="+/-" onClick={buttonClick} message={message}  />
+      <Button text="%" onClick={buttonClick} message={message}  />
+      <Button text="*" onClick={buttonClick} message={message}  />
+      <Button text="7" onClick={buttonClick} message={message}  />
+      <Button text="8" onClick={buttonClick} message={message}  />
+      <Button text="9" onClick={buttonClick} message={message}  />
       <Button text="/" onClick={buttonClick} />
       <Button text="4" onClick={buttonClick} />
       <Button text="5" onClick={buttonClick} />
