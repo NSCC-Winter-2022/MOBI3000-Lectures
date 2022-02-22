@@ -5,11 +5,35 @@ import {useState} from "react";
 function App() {
 
     const [result, setResult] = useState("0");
+    const [oldResult, setOldResult] = useState("");
+    const [operator, setOperator] = useState("");
 
     function buttonClick(text) {
         switch(text) {
         case "AC":
             setResult("");
+            break;
+        case ".":
+            if (!result.includes(".")) {
+                setResult(prev => prev + text);
+            }
+            break;
+        case "+/-":
+            setResult((-parseFloat(result)).toString());
+            break;
+        case "+":
+        case "-":
+        case "*":
+        case "/":
+            //console.log(`result: ${result}, oldresult: ${oldResult}, operator: ${operator}`);
+            setOldResult(result);
+            setResult("");
+            setOperator(text);
+            break;
+        case "=":
+            console.log(`${oldResult} ${operator} ${result}`)
+            setResult(eval(`${oldResult} ${operator} ${result}`))
+            setOldResult(result)
             break;
         default:
             setResult(prev => prev + text);
